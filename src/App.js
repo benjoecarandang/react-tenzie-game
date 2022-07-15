@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import Dice from "./components/Dice";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
@@ -14,7 +14,6 @@ function App() {
   const [isInitial, setIsInitial] = useState(true);
 
   useEffect(() => {
-    console.log('useef1');
     const result = tenzies.every((element) => {
       return element.defaultNum === tenzies[0].defaultNum && element.selected
         ? true
@@ -66,6 +65,7 @@ function App() {
     setWin(false);
     setTimer(0);
     setIsInitial(false);
+
     setTenzies(setDiceData());
   }
 
@@ -86,24 +86,40 @@ function App() {
     }
   }
 
-  function toggleDice(id) {
+  // function toggleDice(id) {
+  //   if(!isGameStart) {
+  //     return;
+  //   }
+
+  //   setTenzies((prevTenzies) =>
+  //     prevTenzies.map((item) => {
+  //       return item.id === id ? { ...item, selected: !item.selected } : item;
+  //     })
+  //   );
+  // }
+
+  const toggleDice = useCallback((e) => {
+    console.log(isGameStart);
     if(!isGameStart) {
       return;
     }
+
+    let id = e.target.getAttribute("data-id");
 
     setTenzies((prevTenzies) =>
       prevTenzies.map((item) => {
         return item.id === id ? { ...item, selected: !item.selected } : item;
       })
     );
-  }
+  }, [isGameStart]);
 
   const tenzieItems = tenzies.map((item) => {
     return (
       <Dice
         key={item.id}
+        id={item.id}
         diceNumber={item.defaultNum}
-        toggle={() => toggleDice(item.id)}
+        toggle={toggleDice}
         selected={item.selected}
       />
     );
