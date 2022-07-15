@@ -9,14 +9,14 @@ export default function Dice(props) {
         return (
             <span>
                 {
-                    id == 1 &&
+                    id === 1 &&
                     <div className="first-face" style={style}>
                         <span className="pip"></span>
                     </div>
                 }
                 
                 {
-                    id == 2 &&
+                    id === 2 &&
                     <div className="second-face" style={style}>
                         <span className="pip"></span>
                         <span className="pip"></span>
@@ -24,7 +24,7 @@ export default function Dice(props) {
                 }
 
                 {
-                    id == 3 &&
+                    id === 3 &&
                     <div className="third-face" style={style}>
                         <span className="pip"></span>
                         <span className="pip"></span>
@@ -33,7 +33,7 @@ export default function Dice(props) {
                 }
 
                 {
-                    id == 4 &&
+                    id === 4 &&
                     <div className="fourth-face" style={style}>
                         <div className="column">
                             <span className="pip"></span>
@@ -47,7 +47,7 @@ export default function Dice(props) {
                 }
 
                 {
-                    id == 5 &&
+                    id === 5 &&
                     <div className="fifth-face" style={style}>
                         <div className="column">
                             <span className="pip"></span>
@@ -65,7 +65,7 @@ export default function Dice(props) {
 
 
                 {
-                    id == 6 &&
+                    id === 6 &&
                     <div className="sixth-face" style={style}>
                         <div className="column">
                             <span className="pip"></span>

@@ -17,10 +17,10 @@ body {
   align-content: center;
 }
 
-main {
+.wrapper {
   width: 900px;
   margin:0 auto;
-  height: 600px;
+  height: 650px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -73,7 +73,9 @@ main {
 }
 
 .dice-container--roll {
+  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0px 30px;
@@ -239,4 +241,22 @@ button:active {
   margin: 2px;
   background-color: #333;
   box-shadow: inset 0 3px #111, inset 0 -3px #555;
+}
+
+.count-details {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 40px;
+  justify-content: space-between;
+}
+
+.inner-wrap {
+  width: 585px;
+}
+
+.warning-message {
+  position: absolute;
+  bottom: -33px;
+  color: #e91e63;
 }
