@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 
 function Dice(props) {
-  console.log("nag render");
   function getDiceFace(id) {
     const style = {
       backgroundColor: props.selected ? "#fff" : "#e7e7e7",

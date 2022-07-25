@@ -56,7 +56,7 @@ function App() {
   }
 
   function getRandomNumber() {
-    return Math.ceil(Math.random() * 2);
+    return Math.ceil(Math.random() * 6);
   }
 
   function gameStart() {
@@ -86,20 +86,7 @@ function App() {
     }
   }
 
-  // function toggleDice(id) {
-  //   if(!isGameStart) {
-  //     return;
-  //   }
-
-  //   setTenzies((prevTenzies) =>
-  //     prevTenzies.map((item) => {
-  //       return item.id === id ? { ...item, selected: !item.selected } : item;
-  //     })
-  //   );
-  // }
-
   const toggleDice = useCallback((e) => {
-    console.log(isGameStart);
     if(!isGameStart) {
       return;
     }
