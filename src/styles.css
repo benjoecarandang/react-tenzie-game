@@ -18,17 +18,34 @@ body {
 }
 
 .wrapper {
-  width: 900px;
+  width: 1280px;
+  flex-direction: row;
   margin:0 auto;
   height: 650px;
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
+  gap: 20px;
+}
+
+.wrapper > div {
+  height: 100%;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  padding: 50px;
+  display: flex;
+}
+
+.wrapper > div:first-child {
+  flex-basis: 70%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wrapper > div:last-child {
+  flex-basis: 30%;
+  flex-direction: column;
 }
 
 .title {
@@ -78,7 +95,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0px 30px;
   width: 100%;
 }
 
@@ -253,6 +269,7 @@ button:active {
 
 .inner-wrap {
   width: 585px;
+  margin: 0 auto;
 }
 
 .warning-message {

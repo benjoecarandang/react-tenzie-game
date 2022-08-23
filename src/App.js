@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     let interval;
 
-    if(!isInitial) {
+    if (!isInitial) {
       interval = setInterval(() => {
         setTimer((prevTimer) => prevTimer + 1);
       }, 1000);
@@ -38,7 +38,7 @@ function App() {
 
     return () => {
       clearInterval(interval);
-    }
+    };
   }, [isGameStart, win]);
 
   function setDiceData() {
@@ -86,19 +86,22 @@ function App() {
     }
   }
 
-  const toggleDice = useCallback((e) => {
-    if(!isGameStart) {
-      return;
-    }
+  const toggleDice = useCallback(
+    (e) => {
+      if (!isGameStart) {
+        return;
+      }
 
-    let id = e.target.getAttribute("data-id");
+      let id = e.target.getAttribute("data-id");
 
-    setTenzies((prevTenzies) =>
-      prevTenzies.map((item) => {
-        return item.id === id ? { ...item, selected: !item.selected } : item;
-      })
-    );
-  }, [isGameStart]);
+      setTenzies((prevTenzies) =>
+        prevTenzies.map((item) => {
+          return item.id === id ? { ...item, selected: !item.selected } : item;
+        })
+      );
+    },
+    [isGameStart]
+  );
 
   const tenzieItems = tenzies.map((item) => {
     return (
@@ -111,11 +114,11 @@ function App() {
       />
     );
   });
-  
+
   let buttonElement;
 
-  if(!isGameStart) {
-    if(win) {
+  if (!isGameStart) {
+    if (win) {
       buttonElement = <button onClick={gameStart}>Play Again</button>;
     } else {
       buttonElement = <button onClick={gameStart}>Start Game</button>;
@@ -127,25 +130,31 @@ function App() {
   return (
     <div className="wrapper">
       {win && <Confetti />}
-      <div className="title">
-        <h1>Tenzies</h1>
-        <h3>
-          Roll until all dice are the same. Click each die to freeze it at its
-          current value between rolls.
-        </h3>
-      </div>
-
-      <div className="inner-wrap">
-        <div className="count-details">
-          <span>Roll count: {rollCount}</span>
-          <span>Timer: {timer > 0 ? `${timer} seconds` : "N/A"}</span>
+      <div>
+        <div className="title">
+          <h1>Tenzies</h1>
+          <h3>
+            Roll until all dice are the same. Click each die to freeze it at its
+            current value between rolls.
+          </h3>
         </div>
 
-        <div className="dice-container">{tenzieItems}</div>
-      </div>
+        <div className="inner-wrap">
+          <div className="count-details">
+            <span>Roll count: {rollCount}</span>
+            <span>Timer: {timer > 0 ? `${timer} seconds` : "N/A"}</span>
+          </div>
 
-      <div className="dice-container--roll">
-        {buttonElement}
+          <div className="dice-container">{tenzieItems}</div>
+        </div>
+
+        <div className="dice-container--roll">{buttonElement}</div>
+      </div>
+      <div>
+        <h4>
+          Leaderboards
+        </h4>
+        
       </div>
     </div>
   );
